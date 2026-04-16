@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 03</title>
+</head>
+<body>
+    <h3>Formulário de Matrícula - Fatec</h3>
+    <form>
+
+        <h3>Informações Pessoais</h3>
+
+        <label for="Nome">
+            Nome:
+            <input type="text" id="nome" name="nome"><br>
+        </label>
+        <label for="E-mail">
+            E-mail:
+            <input type="email" id="email" name="email"><br>
+        </label>
+        <label for="Data_de_Nascimento">
+            Data de Nascimento:
+            <input type="date" id="data" name="data"><br>
+        </label>
+        <label for="CPF">
+            CPF:
+            <input type="text" pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}" title="Formato: 000.000.000-00"><br>
+        </label>
+
+        <h3>Dados Acadêmicos</h3>
+
+        <label> Selecione o curso que deseja:<br>
+            <select id="curso" name="curso">
+                <option value="">Selecione ...</option>
+                <option value="ads">ADS</option>
+                <option value="si">Sistemas da Inforamação</option>
+                <option value="cc">Ciência da Computação</option>
+            </select>
+        </label><br><br>
+        <label> Período: <br>
+            <input type="radio" name="opcao" value="manha">Manhã
+            <input type="radio" name="opcao" value="noite">Noite
+        </label><br><br>
+        <label>Já programou antes?<br>
+            <input type="checkbox">
+        </label><br><br>
+        <label for="msg">Observações<br>
+            <textarea id="msg" name="mensagem" rows="5" placeholder="Escreva aqui.."></textarea>
+        </label><br><br>
+        <button type="submit">
+            Enviar
+        </button>
+
+    </form>
+</body>
+</html>

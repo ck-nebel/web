@@ -1,0 +1,90 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+/* Keyframes Fade In */
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fade-in-element {
+    animation: fade-in 1.5s ease-in-out;
+}
+
+/* Links e Botões com Transition */
+.link-animado, .btn-animado {
+    transition: all 0.3s ease;
+}
+
+.link-animado {
+    color: #8e44ad;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.link-animado:hover {
+    color: #2980b9;
+    letter-spacing: 1px;
+}
+
+.btn-animado {
+    padding: 15px 30px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-animado:hover {
+    background-color: #2ecc71;
+}
+
+.btn-animado:active {
+    transform: scale(0.95);
+}
+
+/* Efeito no Card */
+.card-animado {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.card-animado:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

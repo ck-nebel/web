@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio | Desenvolvedor & Segurança</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">&lt;Dev/Sec&gt;</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#sobre">Sobre Mim</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Olá, eu sou o Erick!</h1>
+            <p>Analista de Cibersegurança Júnior.</p>
+            <a href="#projetos" class="btn">Ver Projetos</a>
+        </section>
+
+        <section id="sobre">
+            <h2>Sobre Mim</h2>
+            <div class="sobre-conteudo">
+                <img src="img/foto-perfil.jpg" alt="Minha foto de perfil" class="foto-perfil">
+                <div class="bio">
+                    <p>Atualmente atuo como Monitor de Redes de Computadores, com três anos de experiência em suporte técnico e infraestrutura. Tenho uma forte paixão por performance, virtualização (Linux, Docker) e desenvolvimento de sistemas voltados para a web.</p>
+                    <p>Busco constantemente resultados práticos e estou em preparação para certificações em cibersegurança, como CompTIA Security+ e CySA+.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projetos">
+            <h2>Projetos em Destaque</h2>
+            <div class="projetos-grid">
+                
+                <div class="projeto-card">
+                    <img src="img/projeto-1.jpg" alt="Projeto Plataforma de Estudo">
+                    <div class="card-info">
+                        <h3>Plataforma de Estudo Ativo</h3>
+                        <p>Sistema baseado em IA com algoritmos de repetição espaçada para otimização de consolidação de memória.</p>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <img src="img/projeto-2.jpg" alt="Projeto Organizador Web">
+                    <div class="card-info">
+                        <h3>Organizador de Livros Web</h3>
+                        <p>Aplicação web completa com operações CRUD e planejador de leituras integrado a um banco de dados.</p>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <img src="img/projeto-3.jpg" alt="Projeto Virtualização">
+                    <div class="card-info">
+                        <h3>Laboratório de Redes e Linux</h3>
+                        <p>Ambiente virtualizado com Docker e VirtualBox para testes de protocolos de rede, triggers SQL e scripts de recuperação.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="habilidades">
+            <h2>Tecnologias e Skills</h2>
+            <div class="skills">
+                <span class="skill-tag">Linux / Infraestrutura</span>
+                <span class="skill-tag">Segurança (Security+ / CySA+)</span>
+                <span class="skill-tag">Redes e Virtualização</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">SQL & Banco de Dados</span>
+                <span class="skill-tag">Desenvolvimento Web</span>
+                <span class="skill-tag">Dart & Flutter</span>
+            </div>
+        </section>
+
+        <section id="contato">
+            <h2>Vamos Conversar?</h2>
+            <form class="form-contato" action="#" method="POST">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+
+                <label for="mensagem">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="5" placeholder="Como posso ajudar?" required></textarea>
+
+                <button type="submit" class="btn">Enviar Mensagem</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Meu Portfólio Profissional.</p>
+        <div class="redes-sociais">
+            <a href="https://www.linkedin.com/in/camargo-erick">LinkedIn</a> | <a href="https://github.com/ck-nebel">GitHub</a>
+        </div>
+    </footer>
+
+</body>
+</html>
