@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 12 - JS Básico</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Aula 12: Calculadora</h1>
+    <p>Abra o console (F12) para ver os resultados do JavaScript!</p>
+  </div>
+
+  <script>
+    const nome = 'Maria';
+    const precoProduto = 200;
+    const percentualDesconto = 15;
+
+    const valorDesconto = precoProduto * (percentualDesconto / 100);
+    const precoFinal = precoProduto - valorDesconto;
+
+    console.log(`Olá, ${nome}! O produto custa R$ ${precoProduto}`);
+    console.log(`Desconto de ${percentualDesconto}%: R$ ${valorDesconto}`);
+    console.log(`Preço final: R$ ${precoFinal}`);
+    
+    console.log(`Preço acima de R$ 100? ${precoProduto > 100}`);
+    console.log(`Desconto válido? ${percentualDesconto >= 0 && percentualDesconto <= 100}`);
+  </script>
+</body>
+</html>

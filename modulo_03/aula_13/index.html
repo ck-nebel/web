@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 13 - Arrays e Objetos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Aula 13: Alunos</h1>
+    <p>Os dados processados estão no console (F12).</p>
+  </div>
+
+  <script>
+    const alunos = [
+      { nome: 'Ana', nota1: 8.0, nota2: 9.0 },
+      { nome: 'Carlos', nota1: 5.0, nota2: 4.5 },
+      { nome: 'Julia', nota1: 9.5, nota2: 8.5 },
+      { nome: 'Pedro', nota1: 4.0, nota2: 6.0 },
+      { nome: 'Lucas', nota1: 7.0, nota2: 7.0 }
+    ];
+
+    const calcularMedia = (n1, n2) => (n1 + n2) / 2;
+
+    const alunosComMedia = alunos.map((aluno) => {
+      return {
+        ...aluno,
+        media: calcularMedia(aluno.nota1, aluno.nota2)
+      };
+    });
+
+    const aprovados = alunosComMedia.filter((a) => a.media >= 6);
+    const reprovados = alunosComMedia.filter((a) => a.media < 6);
+
+    const somaTotal = alunosComMedia.reduce((acc, aluno) => acc + aluno.media, 0);
+    const mediaGeral = somaTotal / alunosComMedia.length;
+
+    const ranking = [...alunosComMedia].sort((a, b) => b.media - a.media);
+
+    console.log(`--- APROVADOS ---`);
+    aprovados.forEach(a => console.log(`${a.nome} (Média: ${a.media})`));
+
+    console.log(`--- REPROVADOS ---`);
+    reprovados.forEach(a => console.log(`${a.nome} (Média: ${a.media})`));
+
+    console.log(`Média geral da turma: ${mediaGeral.toFixed(2)}`);
+    console.log(`Ranking:`, ranking);
+  </script>
+</body>
+</html>

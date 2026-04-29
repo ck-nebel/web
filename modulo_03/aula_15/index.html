@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 15 - Eventos</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    ul { list-style: none; padding: 0; }
+    li {
+      background: var(--bg-dark); padding: 10px; margin-bottom: 5px;
+      border-radius: 6px; display: flex; justify-content: space-between;
+      border-left: 3px solid var(--purple-main); cursor: pointer;
+    }
+    .btn-excluir { background: var(--danger); padding: 2px 8px; margin: 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Tarefas</h1>
+    
+    <input type="text" id="busca" placeholder="Buscar tarefa...">
+    
+    <form id="formTarefa">
+      <input type="text" id="novaTarefa" placeholder="Nova tarefa" required>
+      <button type="submit">Adicionar</button>
+    </form>
+
+    <ul id="listaTarefas"></ul>
+  </div>
+
+  <script>
+    const form = document.querySelector('#formTarefa');
+    const inputTarefa = document.querySelector('#novaTarefa');
+    const inputBusca = document.querySelector('#busca');
+    const listaTarefas = document.querySelector('#listaTarefas');
+
+    let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+
+    function renderizarTarefas() {
+      listaTarefas.innerHTML = '';
+      tarefas.forEach((tarefa, index) => {
+        const li = document.createElement('li');
+        if (tarefa.feita) li.classList.add('feito');
+        li.dataset.index = index;
+        
+        li.innerHTML = `
+          <span>${tarefa.texto}</span>
+          <button class="btn-excluir">X</button>
+        `;
+        listaTarefas.appendChild(li);
+      });
+      localStorage.setItem('tarefas', JSON.stringify(tarefas));
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const texto = inputTarefa.value.trim();
+      tarefas.push({ texto: texto, feita: false });
+      inputTarefa.value = '';
+      renderizarTarefas();
+    });
+
+    listaTarefas.addEventListener('click', (e) => {
+      const liClicado = e.target.closest('li');
+      if (!liClicado) return;
+      
+      const index = liClicado.dataset.index;
+
+      if (e.target.classList.contains('btn-excluir')) {
+        tarefas.splice(index, 1);
+      } else {
+        tarefas[index].feita = !tarefas[index].feita;
+      }
+      renderizarTarefas();
+    });
+
+    inputBusca.addEventListener('input', (e) => {
+      const termo = e.target.value.toLowerCase();
+      const itens = listaTarefas.querySelectorAll('li');
+      
+      itens.forEach((li) => {
+        const textoLi = li.querySelector('span').textContent.toLowerCase();
+        if (textoLi.includes(termo)) {
+          li.style.display = 'flex';
+        } else {
+          li.style.display = 'none';
+        }
+      });
+    });
+
+    renderizarTarefas();
+  </script>
+</body>
+</html>

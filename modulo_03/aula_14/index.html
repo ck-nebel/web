@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 14 - DOM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Produtos</h1>
+    
+    <input type="text" id="nomeProduto" placeholder="Nome do produto">
+    <button id="btnAdicionar">Adicionar Produto</button>
+    <hr style="border-color: var(--border);">
+
+    <button id="btnFiltro">Mostrar só Eletrônicos</button>
+    <button id="btnLimpar">Limpar Tudo</button>
+    
+    <div id="containerProdutos"></div>
+  </div>
+
+  <script>
+    const produtos = [
+      { nome: 'Notebook', preco: 4500, categoria: 'eletronico' },
+      { nome: 'Cadeira', preco: 800, categoria: 'moveis' },
+      { nome: 'Mouse', preco: 120, categoria: 'eletronico' },
+      { nome: 'Mesa', preco: 1500, categoria: 'moveis' },
+      { nome: 'Teclado', preco: 250, categoria: 'eletronico' }
+    ];
+
+    const containerProdutos = document.querySelector('#containerProdutos');
+    const btnFiltro = document.querySelector('#btnFiltro');
+    const btnLimpar = document.querySelector('#btnLimpar');
+    const btnAdicionar = document.querySelector('#btnAdicionar');
+    const inputNome = document.querySelector('#nomeProduto');
+
+    function criarCard(produto) {
+      const card = document.createElement('div');
+      card.className = `card ${produto.categoria}`;
+      card.innerHTML = `
+        <h3>${produto.nome}</h3>
+        <p>R$ ${produto.preco}</p>
+        <small>Categoria: ${produto.categoria}</small>
+      `;
+      containerProdutos.appendChild(card);
+    }
+
+    produtos.forEach((prod) => criarCard(prod));
+
+    btnLimpar.addEventListener('click', () => {
+      containerProdutos.innerHTML = '';
+    });
+
+    btnFiltro.addEventListener('click', () => {
+      const todosCards = document.querySelectorAll('.card');
+      todosCards.forEach((card) => {
+        if (!card.classList.contains('eletronico')) {
+          card.classList.toggle('escondido');
+        }
+      });
+    });
+
+    btnAdicionar.addEventListener('click', () => {
+      const nome = inputNome.value.trim();
+      if (nome) {
+        criarCard({ nome: nome, preco: 99, categoria: 'novo' });
+        inputNome.value = '';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Aula 16 - Fetch API</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #pokedexCard { text-align: center; }
+    #pokedexCard img { width: 150px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pokédex</h1>
+    <input type="text" id="inputPokemon" placeholder="Nome ou número...">
+    <button id="btnBuscar">Buscar</button>
+    
+    <div id="status"></div>
+    <div id="pokedexCard" class="card escondido">
+      <h2 id="pokeNome"></h2>
+      <img id="pokeImg" src="" alt="Imagem do Pokemon">
+      <p id="pokeTipo"></p>
+    </div>
+  </div>
+
+  <script>
+    const inputPokemon = document.querySelector('#inputPokemon');
+    const btnBuscar = document.querySelector('#btnBuscar');
+    const statusMsg = document.querySelector('#status');
+    const card = document.querySelector('#pokedexCard');
+    
+    const pokeNome = document.querySelector('#pokeNome');
+    const pokeImg = document.querySelector('#pokeImg');
+    const pokeTipo = document.querySelector('#pokeTipo');
+
+    async function buscarPokemon() {
+      const busca = inputPokemon.value.trim().toLowerCase();
+      if (!busca) return;
+
+      statusMsg.textContent = 'Carregando...';
+      card.classList.add('escondido');
+
+      try {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${busca}`);
+        
+        if (!response.ok) {
+          throw new Error('Pokémon não encontrado!');
+        }
+
+        const data = await response.json();
+        
+        statusMsg.textContent = '';
+        pokeNome.textContent = data.name.toUpperCase();
+        pokeImg.src = data.sprites.front_default;
+        
+        const tipos = data.types.map(t => t.type.name).join(', ');
+        pokeTipo.textContent = `Tipo(s): ${tipos}`;
+        
+        card.classList.remove('escondido');
+
+      } catch (erro) {
+        statusMsg.textContent = erro.message;
+        card.classList.add('escondido');
+      }
+    }
+
+    btnBuscar.addEventListener('click', buscarPokemon);
+  </script>
+</body>
+</html>
